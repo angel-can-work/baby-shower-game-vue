@@ -6,3 +6,8 @@
   padding: 2rem;
   font-weight: normal;
 }
+
+.box-shadow,
+.text-shadow {
+  box-shadow: 0 4px 8px var(--vt-c-box-shadow);
+}

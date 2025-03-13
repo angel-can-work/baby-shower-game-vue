@@ -24,6 +24,7 @@ defineProps<{
 <template>
   <div class="container">
     <h2 class="">{{ title }}</h2>
+    <!-- compute this -->
     <p>
       Once upon a time, a little bundle of joy named <span>{{ formData.name }}</span> was born! From
       the very first day, everyone knew <span>{{ formData.name }}</span> was special. [She/He/They]
@@ -76,7 +77,7 @@ defineProps<{
 span {
   font-weight: bold;
   font-size: 20px;
-  color: #10ada6;
+  color: var(--vt-c-teal-me-no-lies);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 .titlecase {

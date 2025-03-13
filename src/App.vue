@@ -18,8 +18,8 @@ const promptData = (data) => {
 </script>
 
 <template>
-  <div class="container outer">
-    <h1 class="">Baby Shower Game</h1>
+  <div class="app-container outer">
+    <h1 class="header">Baby Shower Game</h1>
     <hr class="horizontal-rule" />
     <div class="main">
       <div class="rules-and-answers">
@@ -30,11 +30,11 @@ const promptData = (data) => {
         </section>
         <div v-if="Object.keys(formData).length > 0" class="answers">
           <p v-for="(value, key, index) in formData" v-bind:key="index">
-            {{ prompts[index].message }}: <span>{{ value }}</span>
+            {{ prompts[index].message }}: <b>{{ value }}</b>
           </p>
         </div>
       </div>
-      <div class="form-story">
+      <div class="form-story box-shadow">
         <div v-if="!showStory">
           <QuiryForm @update-data="updateFormData" @prompt-data="promptData" />
         </div>
@@ -48,52 +48,50 @@ const promptData = (data) => {
 </template>
 
 <style scoped>
-.container {
+.app-container {
   display: grid;
   gap: 40px;
-}
-
-h1 {
-  font-family: 'Alex Brush', cursive;
-  font-size: 80px;
-  font-weight: 900;
-  color: white;
-  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.75);
-}
-
-.outer {
   padding: 60px;
   background-image: url('/src/assets/bg.png');
   background-repeat: no-repeat;
   background-size: cover;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
+
+.header {
+  font-family: 'Alex Brush', cursive;
+  font-size: 80px;
+  font-weight: 900;
+  color: var(--vt-c-white);
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.75);
+}
+
 .horizontal-rule {
-  color: white;
+  color: var(--vt-c-white);
   margin-bottom: 40px;
 }
+
 .main {
   display: grid;
   grid-template-columns: auto auto;
   column-gap: 50px;
   row-gap: 40px;
 }
+
 .form-story {
   padding: 0 20px;
-  background-color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  background-color: var(--vt-c-white);
 }
 
 .rules-and-answers {
   background: rgba(255, 255, 255, 0.5);
   padding: 20px;
 }
+
 .rules {
   margin-bottom: 40px;
 }
-span {
-  font-weight: bold;
-}
+
 @media screen and (max-width: 992px) {
   .main {
     grid-template-columns: auto;
@@ -105,11 +103,11 @@ span {
 }
 
 @media screen and (max-width: 576px) {
-  h1 {
+  .header {
     text-align: center;
   }
 
-  .outer {
+  .app-container {
     padding: unset;
   }
 }
