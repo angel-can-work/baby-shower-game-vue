@@ -2,18 +2,20 @@
 import Story from './components/ShortStory.vue'
 import QuiryForm from './components/QuirkyForm.vue'
 import { ref } from 'vue'
+import type { FormDataType } from './types'
 
 const showStory = ref(false)
-const formData = ref({})
-const prompts = ref([])
+const formData = ref<FormDataType>({} as FormDataType)
+const prompts = ref<{ message: string; example: string }[]>([])
 
-const updateFormData = (data) => {
-  formData.value = data
+const updateFormData = (data: { formData: FormDataType; prompts: [] }) => {
+  formData.value = data.formData
+  prompts.value = data.prompts
   showStory.value = true
 }
 
-const promptData = (data) => {
-  prompts.value = data
+const backToForm = () => {
+  showStory.value = false
 }
 </script>
 
@@ -28,17 +30,19 @@ const promptData = (data) => {
           <p>2. Read each completed story aloud for laughs and surprises.</p>
           <p>3. The funniest or most creative answer wins!</p>
         </section>
-        <div v-if="Object.keys(formData).length > 0" class="answers">
+        <div v-if="showStory" class="answers">
           <p v-for="(value, key, index) in formData" v-bind:key="index">
-            {{ prompts[index].message }}: <b>{{ value }}</b>
+            <span v-if="prompts[index].message">
+              {{ prompts[index].message }}: <u>{{ value }}</u>
+            </span>
           </p>
         </div>
+        <button v-if="showStory" class="back-btn" v-on:click="backToForm">Change Answers</button>
       </div>
       <div class="form-story box-shadow">
         <div v-if="!showStory">
-          <QuiryForm @update-data="updateFormData" @prompt-data="promptData" />
+          <QuiryForm @update-form="updateFormData" :formData="formData" />
         </div>
-
         <div v-if="showStory" class="">
           <Story title="A Star is Born" :formData="formData" />
         </div>
@@ -74,7 +78,7 @@ const promptData = (data) => {
 .main {
   display: grid;
   grid-template-columns: auto auto;
-  column-gap: 50px;
+  column-gap: 20px;
   row-gap: 40px;
 }
 
@@ -88,8 +92,23 @@ const promptData = (data) => {
   padding: 20px;
 }
 
-.rules {
+.rules,
+.answers {
   margin-bottom: 40px;
+}
+
+.back-btn {
+  width: fit-content;
+  padding: 16px;
+  align-self: flex-end;
+  border: unset;
+  background-color: var(--vt-c-nasturtium-shoot);
+  color: var(--vt-c-white);
+
+  &:disabled {
+    background-color: var(--vt-c-divider-light-1);
+    color: var(--vt-c-divider-dark-1);
+  }
 }
 
 @media screen and (max-width: 992px) {

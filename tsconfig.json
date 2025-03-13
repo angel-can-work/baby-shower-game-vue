@@ -1,4 +1,10 @@
 {
+  "compilerOptions": {
+    "types": ["./types.d.ts"],
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
   "files": [],
   "references": [
     {
