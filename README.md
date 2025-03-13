@@ -1,6 +1,10 @@
 # baby-shower-word-game
 
-This template should help get you started developing with Vue 3 in Vite.
+Decided to learn a little about Vue. Here's a small baby shower game you can play!
+Any comments are welcome - we're always learning here.
+
+[Online Game](http://portfoliosite.babyshowergame.s3-website.us-east-2.amazonaws.com/)
+[Github](https://github.com/angel-can-work/baby-shower-game-vue)
 
 ## Recommended IDE Setup
 

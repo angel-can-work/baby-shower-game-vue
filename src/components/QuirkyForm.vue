@@ -75,14 +75,15 @@ const setDefault = () => Object.assign(formData, defaultState.value)
   <div class="container">
     <form class="form" @submit.prevent="getFormValues">
       <div class="form-field" v-for="(value, key, index) in formData" v-bind:key="index">
-        <p v-if="prompts[index].message">{{ prompts[index].message }}:</p>
-        <input
-          v-if="prompts[index].message"
-          type="text"
-          v-model="formData[key]"
-          :placeholder="prompts[index].example"
-          required
-        />
+        <template v-if="prompts[index].message">
+          <p>{{ prompts[index].message }}:</p>
+          <input
+            type="text"
+            v-model="formData[key]"
+            :placeholder="prompts[index].example"
+            required
+          />
+        </template>
       </div>
 
       <section class="radio-buttons">
