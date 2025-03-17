@@ -1,4 +1,8 @@
-# baby-shower-word-game
+This app can be viewed [here](http://portfoliosite.babyshowergame.s3-website.us-east-2.amazonaws.com).
+
+# Baby Shower Word Game
+
+![image](https://s3.us-east-2.amazonaws.com/portfoliosite.babyshowergame/assets/baby+shower+game+vue.png)
 
 Decided to learn a little about Vue. Here's a small baby shower game you can play!
 Any comments are welcome - we're always learning here.
